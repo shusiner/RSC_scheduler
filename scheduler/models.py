@@ -134,7 +134,7 @@ class Site(models.Model):
 
 class Schedule(models.Model):
     guard = models.ForeignKey('Guard', on_delete=models.CASCADE)
-    date = models.DateField()
+    #date = models.DateField()
     slug = models.SlugField(null=True)
     
     is_day = models.BooleanField(default=False)
