@@ -60,7 +60,7 @@ class Guard(models.Model):
         for i in range(num):
             e = dt + datetime.timedelta(i)
             if(schedule):
-                if(schedule.date.month == mth):
+                if(schedule.day.month == mth):
                     break
             #if (e.date - dt).days>=0:
             Schedule.objects.create(guard=self, date = e)
@@ -134,7 +134,7 @@ class Site(models.Model):
 
 class Schedule(models.Model):
     guard = models.ForeignKey('Guard', on_delete=models.CASCADE)
-    date = models.DateField(null=True, blank=True)
+    day = models.DateField(null=True, blank=True)
     slug = models.SlugField(null=True)
     
     is_day = models.BooleanField(default=False)
@@ -142,16 +142,16 @@ class Schedule(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.date.strftime('%b. %d, %Y')
+        return self.day.strftime('%b. %d, %Y')
 
     def str1(self):
-        return self.date.strftime('%d/%m')
+        return self.day.strftime('%d/%m')
 
     def month(self):
-        return self.date.month
+        return self.day.month
     
     def day(self):
-        return self.date.day
+        return self.day.day
 
     def update(self):
         """Returns the url to update a particular author instance."""
@@ -166,7 +166,7 @@ class Schedule(models.Model):
         return reverse('schedule_detail', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
-        temp = slugify(self.date)
+        temp = slugify(self.day)
         self.slug = slugify(self.guard.name+" "+str(temp))
         super(Schedule, self).save(*args, **kwargs) # Call the real save() method
 
