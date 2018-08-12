@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb my-4">    
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Guard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'schedule' %}">Schedule View</a></li>
+    <li class="breadcrumb-item"><a href="{{ schedule.get_absolute_url }}">{{ schedule }}</a></li>
+    <li class="breadcrumb-item active">Delete</li>
+  </ol>
+  <p>Are you sure you want to delete the date: {{ schedule }}?</p>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" action="" value="Yes, delete." />
+  </form>
+  
+</div>
+
+{% endblock %}

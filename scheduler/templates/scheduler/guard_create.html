@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <ol class="breadcrumb my-4">    
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'guard' %}">Guard View</a></li>
+        <li class="breadcrumb-item active">Create Guard</li>
+    </ol>
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h2>Create {{ user_type }}</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Summit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

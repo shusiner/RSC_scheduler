@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb my-4">    
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'site' %}">Site View</a></li>
+    <li class="breadcrumb-item"><a href="{{ site.get_absolute_url }}">{{ site }}</a></li>
+    <li class="breadcrumb-item active">Delete</li>
+  </ol>
+  <p>Are you sure you want to delete the site: {{ site }}?</p>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" action="" value="Yes, delete." />
+  </form>
+  
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+{% if perms.scheduler.guard_view %}
+<div class="container">
+  <ol class="breadcrumb my-4">
+    <li class="breadcrumb-item active">guards</li>
+  </ol>
+  <a href="{% url 'schedule' %}">schedule</a>
+  </div>
+
+{% endif %}
+
+
+{% if perms.scheduler.manager_view %}
+<div class="container">
+  <ol class="breadcrumb my-4">
+    <li class="breadcrumb-item active">Manager</li>
+  </ol>
+  <a href="{% url 'guard' %}">guards</a>
+  <br>
+  <a href="{% url 'site' %}">sites</a>
+
+{% endif %}
+
+{% endblock %}

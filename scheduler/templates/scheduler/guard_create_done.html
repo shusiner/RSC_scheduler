@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}<title>Guard Created</title>{% endblock %}
+
+{% block content %}
+<div class="container">
+    <ol class="breadcrumb my-4">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'guard' %}">Guard View</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'guard_create' %}">Create Guard</a></li>
+      <li class="breadcrumb-item active">Success</li>
+    </ol>
+  <div class="alert alert-success" role="alert">
+    <strong>Success!</strong> Guard has been created!
+  </div>
+  <a href="{% url 'home' %}" class="btn btn-secondary">Return to home page</a>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb my-4">    
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Guard</a></li>
+    <li class="breadcrumb-item active">Schedule View</li>
+  </ol>
+  <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Date</th>
+          <th>Day</th>
+          <th>Night</th>
+        </tr>
+      </thead>
+  <tbody>
+  {% for schedule in schedule_list %}
+  <tr>
+    <td>
+      <a href="{{ schedule.update }}">{{ schedule }}</a>
+    </td>
+    <td class="align-middle">{{ schedule.is_day |yesno:"yes,no,maybe" }}</td>
+    <td class="align-middle">{{ schedule.is_night|yesno:"yes,no,maybe" }}</td>
+  </tr>
+{% endfor %}
+
+
+  <!-- <a href="{% url "schedule_create" %}">Add Schedule</a> -->
+
+
+{% endblock %}

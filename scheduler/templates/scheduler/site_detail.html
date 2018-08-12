@@ -1,0 +1,51 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<!-- <div class="container">
+        <ol class="breadcrumb my-4">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'site' %}">Site View</a></li>
+          <li class="breadcrumb-item active">{{ site.name }}</li>
+        </ol>
+        <a href="{{ site.update }}"> update </a>
+        <br>
+        <a href="{% url 'site_delete' site.id %}">delete</a>
+        {% for guard in site.guard_set.all %}
+        <hr>
+        <p><a href="{{ guard.get_absolute_url }}">{{ guard.name }}</a></p>
+        {% endfor %}
+      </div> -->
+      <div class="container" style=overflow:scroll>
+          <ol class="breadcrumb my-4">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'site' %}">Site View</a></li>
+              <li class="breadcrumb-item active">{{ site.name }}</li>
+            </ol>
+            <a href="{{ site.update }}"> update </a>
+            <br>
+            <a href="{{ site.delete1 }}">delete</a>
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>guard</th>
+            {% for schedule in date_list %}
+            <th>{{ schedule.str1 }}
+            <small class="text-muted d-block">D/N</small>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+    <tbody>
+    {% for guard in site.guard_set.all %}
+    <tr>
+      <td><a href="{{ guard.get_absolute_url }}">{{ guard.name }}</a></td>
+        {% for schedule in guard.schedule_set.all %}
+          {% if today.day <= schedule.day %}
+            <td class="align-middle">{{ schedule.is_day|yesno:"y,n" }}/{{ schedule.is_night|yesno:"y,n" }}</td>
+          {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    
+{% endblock %}

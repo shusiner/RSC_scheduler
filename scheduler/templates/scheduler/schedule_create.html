@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb my-4">    
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Guard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'schedule' %}">Schedule View</a></li>
+    <li class="breadcrumb-item active">Add Schedule</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+        <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="btn btn-success">Summit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

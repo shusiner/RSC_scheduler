@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+        <ol class="breadcrumb my-4">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Guard</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'schedule' %}">Schedule View</a></li>
+          <li class="breadcrumb-item active">{{ schedule.date }}</li>
+        </ol>
+        <a href="{{ schedule.update }}"> update </a>
+        <br>
+        <a href="{{ schedule.delete1 }}">delete</a>
+      </div>
+   
+{% endblock %}

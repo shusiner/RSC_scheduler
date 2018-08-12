@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+        <ol class="breadcrumb my-4">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'guard' %}">Guard View</a></li>
+          <li class="breadcrumb-item active">{{ guard.name }}</li>
+        </ol>
+        <a href="{{ guard.update }}"> update </a>
+        <br>
+        <a href="{{ guard.delete1 }}">delete</a>
+      </div>
+
+      
+
+{% endblock %}

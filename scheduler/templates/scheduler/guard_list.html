@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb my-4">    
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+    <li class="breadcrumb-item active">Guard View</li>
+  </ol>
+  <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>guard name</th>
+          <th>guard username</th>
+          <th>guard DOB</th>
+          <th>guard position</th>
+          <th>site</th>
+        </tr>
+      </thead>
+  <tbody>
+  {% for guard in guard_list %}
+  <tr>
+    <td><a href="{{ guard.get_absolute_url }}">{{ guard.name }}</a></td>
+    <td class="align-middle">{{ guard.user }}</td>
+    <td class="align-middle">{{ guard.date_of_birth }}</td>
+    <td class="align-middle">{{ guard.position }}</td>
+    <td class="align-middle">{{ guard.site }}</td>
+  </tr>
+{% endfor %}
+
+
+  <a href="{% url "guard_create" %}">Create Guard</a>
+
+
+{% endblock %}

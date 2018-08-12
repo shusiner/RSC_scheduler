@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb my-4">    
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Manager</a></li>
+    <li class="breadcrumb-item active">Site View</li>
+  </ol>
+  <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>site</th>
+          <th>location</th>
+        </tr>
+      </thead>
+  <tbody>
+  {% for site in site_list %}
+  <tr>
+    <td>
+      <a href="{{ site.get_absolute_url }}">{{ site.name }}</a>
+    </td>
+    <td class="align-middle">{{ site.location }}</td>
+  </tr>
+{% endfor %}
+</div>
+
+
+
+  <a href="{% url "site_create" %}">Create Site</a>
+
+
+{% endblock %}
