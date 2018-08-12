@@ -32,4 +32,4 @@ admin.site.register(User, UserAdmin)
 
 @admin.register(Schedule) 
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ('guard', 'date', 'is_day', 'is_night')
+    list_display = ('guard', 'day', 'is_day', 'is_night')
